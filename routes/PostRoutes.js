@@ -1,12 +1,12 @@
 
-const {create} = require('../controllers/InfoControllers');
+
 const express=require('express');
 const router=express.Router();
-
-  //# create a note
+const {create,update,Delete} = require('../controllers/InfoControllers');
+ 
   router.post('/createpost', create);
-
-
+router.post("/udpdatpost/:_id",update);
+router.delete("/deletpost/:_id",Delete);
   
  
 
