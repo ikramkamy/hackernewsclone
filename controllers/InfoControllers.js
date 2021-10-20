@@ -13,7 +13,7 @@ exports.create =  (req, res) => {
   
 });
 
-postcreated.save((error, post)=>{
+postcreated.save((error, Mypost)=>{
    if (error) {
      console.log("we are having an error")
        return res.status(400).json({
@@ -24,20 +24,20 @@ postcreated.save((error, post)=>{
      }
      if (Mypost) {
        
-       const {text,name,auteur} =Mypost;
+       const {text,name,auteur,article} =Mypost;
        console.log('ROUTE SUCCEED',postcreated)
        return res.status(201).json({
          
-        Mypost: {text,name,auteur},
+        Mypost: {text,name,auteur,article},
        });
      } 
 })
 }
-exports.getinfos =(req,res)=>{
+exports.getposts =(req,res)=>{
     Mypost.find().then((data) => {
 
   res.json(data)
-  console.log("FETCH SUCCED")
+
   })
   .catch((err) => {
     console.log("FETCH FAILED",err)
@@ -48,7 +48,7 @@ exports.getinfos =(req,res)=>{
   });
 }
 
-//#update a info
+
 
 exports.update= (req, res) => {
 console.log("WE ARE UPDATING info")
@@ -81,14 +81,14 @@ const postupdated={text, name, auteur}
 
 
 exports.Delete=(req,res)=>{
-    post.findOneAndDelete({ "_id": req.params._id},(err, doc) => {
+    Mypost.findOneAndDelete({ "_id": req.params._id},(err, doc) => {
       if (err) {
           console.log("Something wrong when DELETING data!");
       }
   
       console.log(doc);
       return res.status(201).json({
-        message: ' Gout DELETED '
+        message: ' post DELETED '
     })
   });
   

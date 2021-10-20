@@ -1,7 +1,7 @@
 const mongoose=require('mongoose');
 
 
-mongoose.connect("mongodb://localhost:27017/",{
+mongoose.connect("mongodb://localhost:27017/gomycode",{
 },(err)=>{
 if(err)
 console.log("ERROR IN CONNECTION WITH SERVER IS",err)
